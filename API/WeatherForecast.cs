@@ -1,6 +1,6 @@
 using System;
 
-namespace ShopAppASP.NETCore
+namespace API
 {
     public class WeatherForecast
     {
