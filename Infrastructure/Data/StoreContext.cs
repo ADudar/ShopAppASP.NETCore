@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShopAppASP.NETCore.Entities;
+﻿using Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace ShopAppASP.NETCore.Data
+namespace Infrastructure.Data
 {
     public class StoreContext : DbContext
     {

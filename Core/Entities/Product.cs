@@ -1,4 +1,4 @@
-﻿namespace ShopAppASP.NETCore.Entities
+﻿namespace Core.Entities
 {
     public class Product
     {

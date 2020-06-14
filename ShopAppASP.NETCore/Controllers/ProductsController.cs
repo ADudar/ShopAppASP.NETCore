@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopAppASP.NETCore.Data;
-using ShopAppASP.NETCore.Entities;
 
 namespace ShopAppASP.NETCore.Controllers
 {
