@@ -6,10 +6,12 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
   ],
   imports: [
     HttpClientModule,
