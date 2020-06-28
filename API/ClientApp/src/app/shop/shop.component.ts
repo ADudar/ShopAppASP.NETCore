@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ShopService} from './shop.service';
 import {IProduct} from '../models/product';
-import {IBrand} from "../models/brand";
-import {IType} from "../models/product-type";
-import {ShopParams} from "../models/shopParams";
+import {IBrand} from '../models/brand';
+import {IType} from '../models/product-type';
+import {ShopParams} from '../models/shopParams';
 
 @Component({
   selector: 'app-shop',
@@ -82,7 +82,7 @@ export class ShopComponent implements OnInit {
   }
 
   onPageChanged(page) {
-   if(this.shopParams.pageNumber !== page) {
+   if (this.shopParams.pageNumber !== page) {
      this.shopParams.pageNumber = page;
      this.getProducts();
    }
