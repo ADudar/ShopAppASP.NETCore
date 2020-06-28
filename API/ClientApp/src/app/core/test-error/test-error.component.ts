@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-test-error',
   templateUrl: './test-error.component.html',
-  styleUrls: ['./test-error.component.css']
+  styleUrls: ['./test-error.component.scss']
 })
 export class TestErrorComponent implements OnInit {
   baseUrl = environment.apiUrl;
+  validationErrors;
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +42,10 @@ export class TestErrorComponent implements OnInit {
     return this.http.get(`${this.baseUrl}products/fortytwo`)
       .subscribe(response => {
         console.log(response);
-      }, e => console.log(e));
+      }, e => {
+        console.log(e);
+        this.validationErrors = e.errors;
+      });
   }
 
 }

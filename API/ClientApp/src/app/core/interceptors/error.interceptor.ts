@@ -1,9 +1,9 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {Router} from "@angular/router";
-import {Injectable} from "@angular/core";
-import {catchError} from "rxjs/operators";
-import {ToastrService} from "ngx-toastr";
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {Router} from '@angular/router';
+import {Injectable} from '@angular/core';
+import {catchError} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -19,10 +19,14 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError(e => {
           if (e) {
             if (e.status === 400) {
-              this.toastr.error(e.error.message, e.error.statusCode)
+              if (e.error.errors) {
+                throw e.error;
+              } else {
+                this.toastr.error(e.error.message, e.error.statusCode);
+              }
             }
             if (e.status === 401) {
-              this.toastr.error(e.error.message, e.error.statusCode)
+              this.toastr.error(e.error.message, e.error.statusCode);
             }
             if (e.status === 404) {
               this.router.navigateByUrl('/not-found');
@@ -33,7 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
           return throwError(e);
         })
-      )
+      );
   }
 
 }
