@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -30,6 +31,11 @@ namespace API
             // services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.AddDbContext<StoreContext>(c =>
                 c.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<ConnectionMultiplexer>(c =>
+            {
+                var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"), true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();
             services.AddCors(opt =>
