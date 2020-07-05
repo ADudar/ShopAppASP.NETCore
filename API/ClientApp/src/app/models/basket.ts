@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid';
 
-interface IBasket {
+export interface IBasket {
   id: string;
   items: IBasketItem[];
 }
 
-interface IBasketItem {
+export interface IBasketItem {
   id: number;
   productName: string;
   price: number;
