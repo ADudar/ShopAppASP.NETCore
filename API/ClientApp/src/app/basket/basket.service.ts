@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Basket, IBasket, IBasketItem} from '../models/basket';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {IProduct} from '../models/product';
 export class BasketService {
   baseUrl = environment.apiUrl;
   private basketSource = new BehaviorSubject<IBasket>(null);
-  basket$ = this.basketSource.asObservable();
+  basket$: Observable<IBasket> = this.basketSource.asObservable();
 
   constructor(private http: HttpClient) {
   }
