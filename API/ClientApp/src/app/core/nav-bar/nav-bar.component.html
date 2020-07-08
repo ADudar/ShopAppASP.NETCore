@@ -1,7 +1,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center justify-content-between
 p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
   <img class="logo" src="/assets/images/logo.png" alt="logo" style="max-height: 70px;"
-  routerLink="/">
+       routerLink="/">
   <nav class="my-2 my-md-0 mr-md-3 text-uppercase style" style="font-size: larger;">
     <a class="p-2" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a class="p-2" [routerLink]="['/shop']" routerLinkActive="active">Shop</a>
@@ -10,10 +10,16 @@ p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
   <div class="d-flex align-items-center">
     <a routerLink="/basket" class="position-relative">
       <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
-      <div *ngIf="(basket$ | async) as basket" class="cart-no">{{basket.items.length}}</div>
+      <div *ngIf="basket$ | async" class="cart-no">{{(basket$ | async).items.length}}</div>
     </a>
-    <a routerLink="/account/login" class="btn btn-outline-secondary mr-2" href="#">Login</a>
-    <a routerLink="/account/register" class="btn btn-outline-secondary mr-3" href="#">Sign up</a>
+    <ng-container *ngIf="(currentUser$ | async) === null">
+      <a routerLink="/account/login" class="btn btn-outline-secondary mr-2" href="#">Login</a>
+      <a routerLink="/account/register" class="btn btn-outline-secondary mr-3" href="#">Sign up</a>
+    </ng-container>
+
+    <ng-container *ngIf="(currentUser$ | async)">
+      <a href="#">Welcome {{(currentUser$ | async).displayName}}</a>
+    </ng-container>
 
   </div>
 </div>
