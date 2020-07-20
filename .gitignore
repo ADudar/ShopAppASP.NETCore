@@ -4,3 +4,5 @@ obj/
 .idea/
 /ShopAppASP.NETCore/shop.db-shm
 /ShopAppASP.NETCore/shop.db-wal
+/.vs/ShopAppASP.NETCore/DesignTimeBuild/.dtbcache.v2
+/.vs/ShopAppASP.NETCore/v16/.suo
