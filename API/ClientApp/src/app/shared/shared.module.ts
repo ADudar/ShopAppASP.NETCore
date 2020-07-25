@@ -10,6 +10,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TextInputComponent} from './text-input/text-input.component';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { BasketSummaryComponent } from './basket-summary/basket-summary.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { StepperComponent } from './components/stepper/stepper.component';
     OrderTotalsComponent,
     TextInputComponent,
     StepperComponent,
+    BasketSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { StepperComponent } from './components/stepper/stepper.component';
     CarouselModule.forRoot(),
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    CdkStepperModule
+    CdkStepperModule,
+    RouterModule
   ],
   exports: [
     PaginationModule,
@@ -38,7 +42,8 @@ import { StepperComponent } from './components/stepper/stepper.component';
     BsDropdownModule,
     TextInputComponent,
     CdkStepperModule,
-    StepperComponent
+    StepperComponent,
+    BasketSummaryComponent
   ]
 })
 export class SharedModule {
