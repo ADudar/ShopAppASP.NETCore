@@ -50,7 +50,6 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    canActivate: [AuthGuard],
     loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
     data: {breadcrumb: {skip: true}}
   },
