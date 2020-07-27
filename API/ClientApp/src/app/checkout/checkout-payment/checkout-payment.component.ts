@@ -4,6 +4,8 @@ import {BasketService} from '../../basket/basket.service';
 import {CheckoutService} from '../checkout.service';
 import {ToastrService} from 'ngx-toastr';
 import {IBasket} from '../../models/basket';
+import {NavigationExtras, Router} from '@angular/router';
+import {IOrder} from '../../models/order';
 
 @Component({
   selector: 'app-checkout-payment',
@@ -16,7 +18,8 @@ export class CheckoutPaymentComponent implements OnInit {
 
   constructor(private basketService: BasketService,
               private checkoutService: CheckoutService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,9 +29,11 @@ export class CheckoutPaymentComponent implements OnInit {
     const basket = this.basketService.getCurrentBasketValue();
     const orderToCreate = this.getOrderToCreate(basket);
     this.checkoutService.createOrder(orderToCreate)
-      .subscribe(() => {
+      .subscribe((order: IOrder) => {
         this.toastr.success('Order was created successfully');
         this.basketService.deleteLocalBasket();
+        const navigationExtras: NavigationExtras = {state: order};
+        this.router.navigate(['checkout/success'], navigationExtras);
       }, e => {
         this.toastr.error(e.message);
         console.error(e);
